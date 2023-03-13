@@ -1,12 +1,23 @@
 import pyshark
 from pyVoIP import VoIP
 
+def answer(call):
+    try:
+        call.answer()
+        call.hangup()
+    except VoIP.InvalidStateError:
+        pass
+
+def encrypt(audio):
+    # Encrypt audio
+    return audio
+
 # Set up VoIP session
-voip = VoIP('sip.example.com', 'alice', 'password')
-voip.connect()
+phone = VoIP.VoIPPhone(callCallback=answer)
+phone.start()
 
 # Make call
-voip.call('bob@example.com')
+call = VoIP.VoIPCall(phone)
 
 # Capture and analyze packets
 capture = pyshark.LiveCapture(interface='eth0', bpf_filter='udp port 5060 or udp portrange 10000-20000')
@@ -29,7 +40,9 @@ for packet in capture:
                 # Apply encryption
                 encrypted_audio = encrypt(audio)
                 # Send encrypted audio
-                voip.send_audio(encrypted_audio)
+                call.send_audio(encrypted_audio)
 
 # End call
-voip.hangup()
+call.hangup()
+
+phone.stop()
