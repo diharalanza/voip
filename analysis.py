@@ -2,7 +2,6 @@
 #Source from https://www.proquest.com/docview/1980476483?pq-origsite=primo
 
 import dpkt
-import pcapy
 import pyshark
 import netifaces
 import socket
@@ -11,7 +10,7 @@ import os
 
 
 def detectInterface():
-    interfaceList = pcapy.findalldevs()
+    interfaceList = netifaces.interfaces()
     print("Select an interface for packet sniffing:")
 
     for i in range(len(interfaceList)):
@@ -32,6 +31,7 @@ def captureTraffic(interfaceName, duration=50):
 
     print(f"Captured {len(capture)} packets and saved to {filename}")
     return filename
+
 
 # Remove anomalies
 def editcap(input_file):
@@ -56,6 +56,7 @@ def menu():
     else:
         return choice
 
+
 # Option 1
 def printGeoLocation(capFile):
     with open(capFile, 'rb') as f:
@@ -71,6 +72,7 @@ def printGeoLocation(capFile):
 
             print(f"{sourceIP} -> {destinationIP}: {geoIP.record_by_addr(destinationIP)}")
 
+
 # Option 2
 def printPorts(capFile):
     with open(capFile, 'rb') as f:
@@ -82,13 +84,15 @@ def printPorts(capFile):
 
             if isinstance(ip.data, dpkt.udp.UDP):
                 udp = ip.data
-                
+
                 if udp.dport == 5060:
                     print(f"{socket.inet_ntoa(ip.src)}:{udp.sport} -> {socket.inet_ntoa(ip.dst)}:{udp.dport}")
+
 
 # Option 3
 def extractRTPPackets(capFile):
     os.system(f"tshark -r {capFile} -Y rtp")
+
 
 if __name__ == "__main__":
     interfaceName = detectInterface()
