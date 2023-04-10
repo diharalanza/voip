@@ -1,0 +1,12 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+E8:2C:6D:8A:48:DB, 2023-03-26 17:07:18, 2023-03-26 17:09:55, 11, 270, WPA2 WPA, CCMP, PSK, -39,      329,      460,   0.  0.  0.  0,   8, baguette, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+7C:76:35:C9:E1:86, 2023-03-26 17:07:19, 2023-03-26 17:09:49, -87,       47, E8:2C:6D:8A:48:DB,
+52:DB:A9:3B:05:C3, 2023-03-26 17:07:27, 2023-03-26 17:09:54, -43,      486, E8:2C:6D:8A:48:DB,
+AC:89:95:7E:A8:81, 2023-03-26 17:08:17, 2023-03-26 17:09:17,  -1,        2, E8:2C:6D:8A:48:DB,
+F4:81:39:37:3D:59, 2023-03-26 17:08:17, 2023-03-26 17:08:17,  -1,        1, E8:2C:6D:8A:48:DB,
+32:F2:18:A5:51:21, 2023-03-26 17:08:31, 2023-03-26 17:09:54, -53,      187, E8:2C:6D:8A:48:DB,
+70:1A:B8:E5:93:81, 2023-03-26 17:08:45, 2023-03-26 17:08:56, -34,        7, E8:2C:6D:8A:48:DB,
+
