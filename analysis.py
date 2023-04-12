@@ -36,7 +36,7 @@ def captureTraffic(interfaceName, duration=50):
 # Remove anomalies
 def editcap(input_file):
     output_file = f"{os.path.splitext(input_file)[0]}_editcap.pcap"
-    os.system(f"editcap -F pcap {input_file} {output_file}")
+    os.system(f"editcap -d pcap {input_file} {output_file}")
 
     print(f"Edited {input_file} and saved as {output_file}")
     return output_file
