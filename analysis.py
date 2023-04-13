@@ -8,7 +8,7 @@ import socket
 import pygeoip
 import os
 
-
+"""
 def detectInterface():
     interfaceList = netifaces.interfaces()
     print("Select an interface for packet sniffing:")
@@ -18,6 +18,20 @@ def detectInterface():
 
     choice = int(input())
     interfaceName = interfaceList[choice-1]
+
+    print(f"Using interface: {interfaceName}")
+    return interfaceName
+"""
+def detectInterface():
+    interfaces = socket.if_nameindex()
+
+    print("Select an interface for packet sniffing:")
+
+    for i, (index, name) in enumerate(interfaces):
+        print(f"{i+1}. {name}")
+
+    choice = int(input())
+    interfaceName = interfaces[choice-1]
 
     print(f"Using interface: {interfaceName}")
     return interfaceName
